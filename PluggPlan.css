@@ -1,0 +1,42 @@
+h1 {
+    background-color: rgb(169, 216, 255);
+    text-align: center;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#pauser {
+    background-color: rgb(146, 174, 211);
+    margin-right: 10%;
+    float: left;
+    text-align: center;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}  
+
+#distraktioner {
+    background-color: rgb(146, 174, 211);
+    margin-right: 10%;
+    float: left;
+    text-align: center;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
+#anteckna {
+    background-color: rgb(146, 174, 211);
+    margin-right: 10%;
+    float: left;
+    text-align: center;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
+#sova {
+    background-color: rgb(146, 174, 211);
+    margin-right: 10%;
+    float: left;
+    text-align: center;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
