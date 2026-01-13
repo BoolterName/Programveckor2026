@@ -1,16 +1,37 @@
 const calendarContainer = document.querySelector(".calendar");
 const currentMonthDisplay = document.querySelector("#currentmonth");
 
+const backBtn = document.querySelector("#back");
+const forwardBtn = document.querySelector("#forward");
+
 const locale = "sv-SE";
-
 let currentMonth = Temporal.Now.plainDateISO().with({month:1});
-UpdateCalendarDates(currentMonth)
 
-currentMonthDisplay.textContent = currentMonth.toLocaleString(locale, { month: "long" });
+update();
 
+backBtn.addEventListener("click", () => {
+    currentMonth = currentMonth.subtract({months:1});
+    update();
+    console.log("Clicked! "+toString(currentMonth))
+})
 
-function UpdateCalendarDates(selectedMonth){
+forwardBtn.addEventListener("click", () => {
+    currentMonth = currentMonth.add({months:1});
+    update();
+})
+
+function update(){
+    updateCalendarDates(currentMonth);
     
+    currentMonthDisplay.textContent = currentMonth.toLocaleString(locale, { year: "numeric", month: "long" });
+}
+
+function updateCalendarDates(selectedMonth){
+
+    while (calendarContainer.firstChild){
+        calendarContainer.removeChild(calendarContainer.firstChild);
+    }
+
     const dateToday = Temporal.Now.plainDateISO();
 
     const firstDateInMonth = selectedMonth.with({day:1});

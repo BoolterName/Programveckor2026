@@ -29,7 +29,7 @@ body{
 }
 
 .calendar > div.disabled {
-    background-color: #949fa1;
+    background-color: #d3dcf3;
 }
 
 .upper{
@@ -46,6 +46,8 @@ body{
     border-radius: 10px;
     box-shadow: #00000040 0px 2px 2px;
     font-size: 24px;
+    width: 185px;
+    text-align: center;
 }
 
 button{
