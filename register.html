@@ -10,9 +10,24 @@
 
 <body>
 
-  <h1 class="rubrik">PLUGGPLAN</h1>
-  <hr>
-  <h2 class="rubrik">REGISTERA</h2>
+  <nav class="navbar">
+    
+  </nav>
+
+
+<div class="title-container">
+  <h1>PLUGGPLAN</h1>
+  <img src="images/calendar.png" alt="calendar">
+</div>
+
+<hr>
+
+<div class="title-container2">
+  <h2>REGISTERA</h2>
+  <img src="images/triple-right-arrow.png" alt="Brand logo">
+</div>
+
+
 
   <div class="form-wrapper">
     <div class="login-box">
@@ -22,35 +37,35 @@
           <label for="email">Email</label>
           <div class="input-container">
             <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input type="email" id="email" required>
+            <input type="email" id="email" required placeholder="Email adress.." class="inp">
           </div>
         </div>
 
         <div class="input-box">
-          <label for="username">Username</label>
+          <label for="username">Användnamn</label>
           <div class="input-container">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input type="text" id="username" required>
+            <input type="text" id="username" required placeholder="Ditt Användnamn.." class="inp">
           </div>
         </div>
 
         <div class="input-box">
-          <label for="password">Password</label>
+          <label for="password">Lösenord</label>
           <div class="input-container">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" id="password" required>
+            <input type="password" id="password" required placeholder="Ditt Lösenord.." class="inp">
           </div>
         </div>
 
-        <button type="submit">Create Account</button>
+        <button type="submit">Registrera</button>
 
         <div class="register-link">
-          <p>Already have an account? <a href="index.html">Login</a></p>
+
         </div>
 
       </form>
     </div>
   </div>
-
+  <script src="register.js"></script>
 </body>
 </html>
