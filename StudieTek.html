@@ -9,58 +9,75 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="title-container">
-            <h1>STUDIETEKNIKER</h1>
+<!-- HAMBURGER-MENY -->
+<button id="menuBtn" class="menu-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<div id="menu" class="menu">
+  <p><a href="index.html">Hemma</a></p>
+  <p><a href="calendar.html">Schema</a></p>
+  <p><a href="StudieTek.html">Studietekniker</a></p>
+  <p><a href="#" id="logout-link">Logga ut</a></p>
+</div>
+
+<!-- BEFINTLIG NAVBAR -->
+<nav class="navbar">
+    <div class="title-container">
+        <h1>STUDIETEKNIKER</h1>
+        <hr>
+        <a href="calendar.html" class="forgot-link">Kalender</a>
+    </div>
+</nav>
+
+<main class="content">
+    <div class="box-grid">
+
+        <div class="box">
+            <h3>Ta Pauser!</h3>
             <hr>
-            <a href="calendar.html" class="forgot-link">Kalender</a>
+            <p>
+                Det är viktigt att ta pauser
+                Man ska inte jobba hårt i flera timmar i sträck, det slutar
+                ofta med att man inte lär sig någonting.
+            </p>
         </div>
-    </nav>
 
-    <main class="content">
-        <div class="box-grid">
-
-            <div class="box">
-                <h3>Ta Pauser!</h3>
-                <hr>
-                <p>
-                    Det är viktigt att ta pauser
-                    Man ska inte jobba hårt i flera timmar i sträck, det slutar
-                    ofta med att man inte lär sig någonting.
-                </p>
-            </div>
-
-            <div class="box">
-                <h3>Stäng av distraktioner!</h3>
-                <hr>
-                <p>
-                    Att stänga avsina distraktioner
-                    är mycket viktigt. Det är lätt att man börjar tänka på något
-                    annat när man har fått en notifikation
-                </p>
-            </div>
-
-            <div class="box">
-                <h3>Anteckna!</h3>
-                <hr>
-                <p>
-                    Under lektioner är det viktigt attanteckna
-                    Det man antecknar blir oftast enklare att memorera
-                    när man ska börja plugga.
-                </p>
-            </div>
-
-            <div class="box">
-                <h3>Innan man lägger sig</h3>
-                <hr>
-                <p>
-                    Innan man lägger sig är det viktigt att gå igenom vad man ska
-                    kunna. Repetition innan sömn hjälper att stärka minnet.
-                </p>
-            </div>
-
+        <div class="box">
+            <h3>Stäng av distraktioner!</h3>
+            <hr>
+            <p>
+                Att stänga av sina distraktioner
+                är mycket viktigt. Det är lätt att man börjar tänka på något
+                annat när man har fått en notifikation
+            </p>
         </div>
-    </main>
+
+        <div class="box">
+            <h3>Anteckna!</h3>
+            <hr>
+            <p>
+                Under lektioner är det viktigt att anteckna
+                Det man antecknar blir oftast enklare att memorera
+                när man ska börja plugga.
+            </p>
+        </div>
+
+        <div class="box">
+            <h3>Innan man lägger sig</h3>
+            <hr>
+            <p>
+                Innan man lägger sig är det viktigt att gå igenom vad man ska
+                kunna. Repetition innan sömn hjälper att stärka minnet.
+            </p>
+        </div>
+
+    </div>
+</main>
+
+<script src="calendar.js"></script>
 
 </body>
 </html>

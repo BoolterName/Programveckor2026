@@ -1,3 +1,26 @@
+// Hämta element
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+const logoutLink = document.getElementById("logout-link");
+
+// Visa/dölj meny vid klick på hamburgerknappen
+menuBtn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Logga ut
+logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+});
+
+// Valfritt: stäng menyn om man klickar utanför
+document.addEventListener("click", (event) => {
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
 const calendarElement = document.querySelector(".calendar");
 const currentMonthElement = document.querySelector("#currentmonth");
 
@@ -109,7 +132,6 @@ function updateAssignments(month){
         else{
             currentDate = firstDayInMonth.add({days:i-monthStartDayOfWeek+1});
         }
-
 
 
         const dateDiv = dateDivs[i];
