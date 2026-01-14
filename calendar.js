@@ -1,5 +1,5 @@
-const calendarContainer = document.querySelector(".calendar");
-const currentMonthDisplay = document.querySelector("#currentmonth");
+const calendarElement = document.querySelector(".calendar");
+const currentMonthElement = document.querySelector("#currentmonth");
 
 const backBtn = document.querySelector("#back");
 const forwardBtn = document.querySelector("#forward");
@@ -12,7 +12,6 @@ update();
 backBtn.addEventListener("click", () => {
     currentMonth = currentMonth.subtract({months:1});
     update();
-    console.log("Clicked! "+toString(currentMonth))
 })
 
 forwardBtn.addEventListener("click", () => {
@@ -22,49 +21,73 @@ forwardBtn.addEventListener("click", () => {
 
 function update(){
     updateCalendarDates(currentMonth);
-    
-    currentMonthDisplay.textContent = currentMonth.toLocaleString(locale, { year: "numeric", month: "long" });
+    updateAssignments(currentMonth);
+    currentMonthElement.textContent = currentMonth.toLocaleString(locale, { year: "numeric", month: "long" });
 }
 
-function updateCalendarDates(selectedMonth){
+function updateCalendarDates(month){
 
-    while (calendarContainer.firstChild){
-        calendarContainer.removeChild(calendarContainer.firstChild);
+    while (calendarElement.firstChild){
+        calendarElement.removeChild(calendarElement.firstChild);
     }
 
     const dateToday = Temporal.Now.plainDateISO();
-
-    const firstDateInMonth = selectedMonth.with({day:1});
-    const monthStartDayOfWeek = selectedMonth.with({day:1}).dayOfWeek;
     
-    const calendarItemsLength = 6*7;
-    for(i=0;i<calendarItemsLength;i++)
+    const firstDayInMonth = month.with({day:1});
+    const monthStartDayOfWeek = month.with({day:1}).dayOfWeek;
+    
+    const calendarLength = 42;
+    for(i=0;i<calendarLength;i++)
     {
-        let calendarItemText = "";
+        let calendarDateText = "";
         let disabled = false;
         //Temporal är 1-indexerat och jag hatar det.
         if((i+1)<monthStartDayOfWeek)
         {
-            calendarItemText = firstDateInMonth.subtract({days:monthStartDayOfWeek-i-1}).day;
+            calendarDateText = firstDayInMonth.subtract({days:monthStartDayOfWeek-i-1}).day;
             disabled = true;
         }
-        else if((i+1)<(selectedMonth.daysInMonth+monthStartDayOfWeek)){
-            calendarItemText = firstDateInMonth.add({days:i-monthStartDayOfWeek+1}).day;
+        else if((i+1)<(month.daysInMonth+monthStartDayOfWeek)){
+            calendarDateText = firstDayInMonth.add({days:i-monthStartDayOfWeek+1}).day;
         }
         else
         {
-            calendarItemText = firstDateInMonth.add({days:i-monthStartDayOfWeek+1}).day;
+            calendarDateText = firstDayInMonth.add({days:i-monthStartDayOfWeek+1}).day;
             disabled = true;
         }
-        let itemDiv = document.createElement("div");
-        itemDiv.className = disabled ? "disabled" : "";
-        calendarContainer.appendChild(itemDiv);
+        
+        let dateDiv = document.createElement("div");
+        dateDiv.className = disabled ? "date disabled" : "date";
+        calendarElement.appendChild(dateDiv);
         
         let calendarNumber = document.createElement("p");
-        calendarNumber.textContent = calendarItemText;
-        itemDiv.appendChild(calendarNumber)
-        // let assignments = document.createElement("div");
-        // assignments.className = "assignments";
-        // itemDiv.appendChild(assignments);
+        calendarNumber.textContent = calendarDateText;
+        dateDiv.appendChild(calendarNumber)
+
     }
+}
+
+function updateAssignments(month){
+    const dateDivs = calendarElement.querySelectorAll("div");
+
+    for (let i = 0; i < dateDivs.length; i++) {
+        const dateDiv = dateDivs[i];
+        let assignments = document.createElement("div");
+        assignments.className = "assignments";
+        dateDiv.appendChild(assignments);
+        // hittar alla uppgifter den dagen
+        let assignment = document.createElement("p");
+        assignment.textContent = "prov!";
+        assignment.style.backgroundColor = "#90ff80";
+        assignments.appendChild(assignment);
+
+        let assignment2 = document.createElement("p");
+        assignment2.textContent = "hur lång kan det här bli?";
+        assignment2.style.backgroundColor = "#ff8080";
+        assignments.appendChild(assignment2);
+    }
+}
+
+function addAssignment(name, description, date){
+    
 }
