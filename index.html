@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Pluggplan</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="title-container">
+    <!-- Hamburgerknapp till vänster -->
+    <button id="menuBtn" class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- H1 centrerad -->
+    <h1 class="main-title">PLUGGPLAN</h1>
+  </div>
+
+  <!-- Kalender-länk under H1 -->
+  <div class="calendar-link">
+    <a href="calendar.html" class="a">Kalender</a>
+  </div>
+</header>
+
+<!-- Dropdown-meny -->
+<div id="menu" class="menu">
+  <p><a href="index.html">Hemma</a></p>
+  <p><a href="calendar.html">Schema</a></p>
+  <p><a href="StudieTek.html">Studietekniker</a></p>
+  <p><a href="#" id="logout-link">Logga ut</a></p>
+</div>
+
+<main class="content">
+  <h2 id="welcome-text"></h2>
+
+  <section>
+    <h3>Förfallit:</h3>
+    <div class="card red">
+      <strong>Matteprov:</strong>
+      <p>Måndag 01/05, 12:00 - 14:00</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Kommande:</h3>
+    <div class="card blue">
+      <strong>Fysikprov:</strong>
+      <p>Torsdag 01/05, 09:20 - 11:00</p>
+    </div>
+    <div class="card blue">
+      <strong>Svenska presentation:</strong>
+      <p>Onsdag 01/14, 15:00 - 16:00</p>
+    </div>
+  </section>
+</main>
+
+<script src="index.js"></script>
+<script>
+  // Toggle hamburger-meny
+  const menuBtn = document.getElementById("menuBtn");
+  const menu = document.getElementById("menu");
+
+  menuBtn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
+
+  // Logga ut
+  const logoutLink = document.getElementById("logout-link");
+  logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+  });
+</script>
+</body>
+</html>

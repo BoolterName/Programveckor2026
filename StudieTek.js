@@ -1,23 +1,23 @@
-// Hämta element
+// HAMBURGER-MENY & LOGGA UT
 const menuBtn = document.getElementById("menuBtn");
 const menu = document.getElementById("menu");
 const logoutLink = document.getElementById("logout-link");
 
-// Visa/dölj meny vid klick på hamburgerknappen
+// Toggle meny
 menuBtn.addEventListener("click", () => {
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 });
 
-// Logga ut
-logoutLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.removeItem("loggedInUser");
-    window.location.href = "login.html";
-});
-
-// Valfritt: stäng menyn om man klickar utanför
+// Stäng meny om klick utanför
 document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
         menu.style.display = "none";
     }
+});
+
+
+logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
 });
