@@ -21,6 +21,14 @@ hr {
     margin: 20px auto;
 }
 
+
+h2{
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 80px;
+    font-size: 30px;
+}
+
 .login-title {
     text-align: center;
     font-size: 28px;
