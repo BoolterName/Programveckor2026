@@ -88,6 +88,6 @@ function updateAssignments(month){
     }
 }
 
-function addAssignment(){
-
+function addAssignment(name, description, date){
+    
 }
