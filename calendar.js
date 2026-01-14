@@ -5,7 +5,34 @@ const backBtn = document.querySelector("#back");
 const forwardBtn = document.querySelector("#forward");
 
 const locale = "sv-SE";
-let currentMonth = Temporal.Now.plainDateISO().with({month:1});
+let currentMonth = Temporal.Now.plainDateISO();
+
+function getRandomInt(min, max){
+    return min + Math.floor(Math.random() * (max - min));
+}
+let assignments = []
+
+class assignment{
+    constructor(name, description, date) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        assignments.push(this);
+    }
+}
+
+new assignment("Prov!", "lorem och ipsum",Temporal.Now.plainDateTimeISO().with({day:getRandomInt(1,20)}))
+
+new assignment("Annat Prov", "lorem och ipsum",Temporal.Now.plainDateTimeISO().with({day:getRandomInt(1,20)}))
+
+new assignment("Tredje Prov", "lorem och ipsum",Temporal.Now.plainDateTimeISO().with({day:getRandomInt(1,20)}))
+
+
+
+
+
+
+
 
 update();
 
@@ -70,24 +97,42 @@ function updateCalendarDates(month){
 function updateAssignments(month){
     const dateDivs = calendarElement.querySelectorAll("div");
 
+    const firstDayInMonth = month.with({day:1});
+    const monthStartDayOfWeek = month.with({day:1}).dayOfWeek;
+
     for (let i = 0; i < dateDivs.length; i++) {
+        let currentDate;
+        if((i+1)<monthStartDayOfWeek){
+            currentDate = firstDayInMonth.subtract({days:monthStartDayOfWeek-i-1});
+            disabled = true;
+        }
+        else{
+            currentDate = firstDayInMonth.add({days:i-monthStartDayOfWeek+1});
+        }
+
+
+
         const dateDiv = dateDivs[i];
         let assignments = document.createElement("div");
         assignments.className = "assignments";
         dateDiv.appendChild(assignments);
         // hittar alla uppgifter den dagen
-        let assignment = document.createElement("p");
-        assignment.textContent = "prov!";
-        assignment.style.backgroundColor = "#90ff80";
-        assignments.appendChild(assignment);
 
-        let assignment2 = document.createElement("p");
-        assignment2.textContent = "hur lång kan det här bli?";
-        assignment2.style.backgroundColor = "#ff8080";
-        assignments.appendChild(assignment2);
+        
+
+        if (i%13 == 4)
+        {
+            let assignment = document.createElement("p");
+            assignment.textContent = "prov!";
+            assignment.style.backgroundColor = "#90ff80";
+            assignments.appendChild(assignment);
+        }
+        if (i%5  == 2 && i%7 < 5)
+        {
+            let assignment2 = document.createElement("p");
+            assignment2.textContent = "Annat prov!";
+            assignment2.style.backgroundColor = "#ff8080";
+            assignments.appendChild(assignment2);        }
+
     }
-}
-
-function addAssignment(name, description, date){
-    
 }

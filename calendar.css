@@ -111,3 +111,26 @@ header{
     border-bottom: 2px black;
     background-color: #92AED3;
 }
+
+.popup{
+    display: none;
+    width: fit-content;
+    background-color: #ff8f80;
+    border-radius: 8px;
+    padding: 6px 6px;
+    display: flexbox;
+}
+
+.popup > div {
+    background-color: white;
+    padding: 4px;
+    border-radius: 8px;
+    min-height: 80px;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.time{
+    text-align: end;
+
+}
