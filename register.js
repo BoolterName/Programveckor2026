@@ -13,6 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const user = { email: email, username: username, password: password };
     localStorage.setItem(email, JSON.stringify(user));
     localStorage.setItem("loggedInUser", JSON.stringify(user));
-    window.location.href = "Loggin.html";
+    window.location.href = "Login.html";
   });
 });

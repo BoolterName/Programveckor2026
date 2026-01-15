@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #F0F9FF;
+}
+
+.header {
+  background: #92AED3;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* gör plats för H1 centrerad och kalender under */
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* hamburger till vänster */
+  width: 100%;
+  position: relative;
+  gap: 15px;
+}
+
+.main-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.calendar-link {
+  text-align: center;
+  margin-top: 10px; /* avstånd mellan H1 och kalender */
+}
+
+.menu-btn {
+  width: 40px;
+  height: 35px;
+  background-color: #5d6ee1;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-btn span {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Dropdown-meny */
+.menu {
+  position: absolute;
+  top: 100px; /* justera så den kommer under header */
+  left: 10px;
+  background-color: white;
+  padding: 12px 18px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.menu p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.title h1 {
+  margin: 0;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+}
+
+a {
+  text-decoration: underline;
+  color: black;
+}
+
+.content {
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px;
+  width: 260px;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.red {
+  background: #e91e63;
+}
+
+.blue {
+  background: #5b73d6;
+}

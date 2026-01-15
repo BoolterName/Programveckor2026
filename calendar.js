@@ -1,11 +1,63 @@
+// Hämta element
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+const logoutLink = document.getElementById("logout-link");
+
+// Visa/dölj meny vid klick på hamburgerknappen
+menuBtn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Logga ut
+logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+});
+
+// Valfritt: stäng menyn om man klickar utanför
+document.addEventListener("click", (event) => {
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
 const calendarElement = document.querySelector(".calendar");
 const currentMonthElement = document.querySelector("#currentmonth");
 
 const backBtn = document.querySelector("#back");
 const forwardBtn = document.querySelector("#forward");
+const createBtn = document.querySelector("#create");
+
+
 
 const locale = "sv-SE";
-let currentMonth = Temporal.Now.plainDateISO().with({month:1});
+let currentMonth = Temporal.Now.plainDateISO();
+
+function getRandomInt(min, max){
+    return min + Math.floor(Math.random() * (max - min));
+}
+const assignments = [];
+
+class assignment{
+    constructor(name, color , description, date) {
+        this.name = name;
+        this.color = color
+        this.description = description;
+        this.date = date;
+        assignments.push(this);
+    }
+}
+
+for (let index = 0; index < 30; index++) {
+    new assignment("Prov!", ["#ff8080","#90ff80","#ffdf80"][getRandomInt(0,3)],"lorem och ipsum",Temporal.Now.plainDateTimeISO().add({days:getRandomInt(-20,20)}))
+}
+
+
+
+
+
+
+
 
 update();
 
@@ -18,6 +70,12 @@ forwardBtn.addEventListener("click", () => {
     currentMonth = currentMonth.add({months:1});
     update();
 })
+
+createBtn.addEventListener("click", () => {
+    
+})
+
+
 
 function update(){
     updateCalendarDates(currentMonth);
@@ -70,24 +128,47 @@ function updateCalendarDates(month){
 function updateAssignments(month){
     const dateDivs = calendarElement.querySelectorAll("div");
 
+    const firstDayInMonth = month.with({day:1});
+    const monthStartDayOfWeek = month.with({day:1}).dayOfWeek;
+
     for (let i = 0; i < dateDivs.length; i++) {
+        let currentDate;
+        if((i+1)<monthStartDayOfWeek){
+            currentDate = firstDayInMonth.subtract({days:monthStartDayOfWeek-i-1});
+            disabled = true;
+        }
+        else{
+            currentDate = firstDayInMonth.add({days:i-monthStartDayOfWeek+1});
+        }
+        console.log(currentDate.day)
+
         const dateDiv = dateDivs[i];
-        let assignments = document.createElement("div");
-        assignments.className = "assignments";
-        dateDiv.appendChild(assignments);
+        let assignmentsDiv = document.createElement("div");
+        assignmentsDiv.className = "assignments";
+        dateDiv.appendChild(assignmentsDiv);
         // hittar alla uppgifter den dagen
-        let assignment = document.createElement("p");
-        assignment.textContent = "prov!";
-        assignment.style.backgroundColor = "#90ff80";
-        assignments.appendChild(assignment);
+        assignments.forEach(a => {
+            if(Temporal.PlainDate.compare(a.date, currentDate) == 0){
+                let assignmentP = document.createElement("p");
+                assignmentP.textContent = a.name;
+                assignmentP.style.backgroundColor = a.color;
+                assignmentsDiv.appendChild(assignmentP);
+            }
+        });
 
-        let assignment2 = document.createElement("p");
-        assignment2.textContent = "hur lång kan det här bli?";
-        assignment2.style.backgroundColor = "#ff8080";
-        assignments.appendChild(assignment2);
+        // if (i%13 == 4)
+        // {
+        //     let a = document.createElement("p");
+        //     a.textContent = "prov!";
+        //     a.style.backgroundColor = "#90ff80";
+        //     assignments.appendChild(a);
+        // }
+        // if (i%5  == 2 && i%7 < 5)
+        // {
+        //     let assignment2 = document.createElement("p");
+        //     assignment2.textContent = "Annat prov!";
+        //     assignment2.style.backgroundColor = "#ff8080";
+        //     assignments.appendChild(assignment2);        
+        // }
     }
-}
-
-function addAssignment(name, description, date){
-    
 }
