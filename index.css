@@ -5,11 +5,11 @@
 
 body {
   margin: 0;
-  background: #b0e5ff;
+  background: #F0F9FF;
 }
 
 .header {
-  background: #6a9bd6;
+  background: #92AED3;
   padding: 10px;
   display: flex;
   flex-direction: column; /* gör plats för H1 centrerad och kalender under */
