@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +32,8 @@
 </header>
 
 <main>
-        <!-- <div class="popup">
-            <p class=>Prov!</p>
+    <!-- <div class="popup">
+        <p class=>Prov!</p>
             <div>
                 <p>Beskrivning</p>
                 <p class="time">12:10 - 13:20</p>
@@ -46,7 +46,16 @@
             <button id="forward" type="button"><img src="/images/arrowright.svg" width="29px"></button>
         </div>
         <div id="right">
-            <button id="create" type="button"><img src="/images/add.svg" height="30px"></button>
+            <form action="" method="get" class="assignment-form">
+                <div>
+                    <input type="date" name="date" id="date"/>
+                    <input type="text" name="title" id="title" placeholder="Titel"/>
+                    <input type="text" name="description" id="description" placeholder="Beskrivning"/>
+                    <input type="color" name="color" id="color"/>
+                    <button id="cancel" type="button"><img src="/images/cancel.svg" height="32px"></button>
+                </div>
+            </form>
+        <button id="create" type="button"><img src="/images/add.svg" height="30px"></button>
         </div>
     </div>
     <div class="calendar">

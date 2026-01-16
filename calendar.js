@@ -39,8 +39,8 @@ function getRandomInt(min, max){
 const assignments = [];
 
 class assignment{
-    constructor(name, color , description, date) {
-        this.name = name;
+    constructor(title, color , description, date) {
+        this.title = title;
         this.color = color
         this.description = description;
         this.date = date;
@@ -48,16 +48,9 @@ class assignment{
     }
 }
 
-for (let index = 0; index < 30; index++) {
-    new assignment("Prov!", ["#ff8080","#90ff80","#ffdf80"][getRandomInt(0,3)],"lorem och ipsum",Temporal.Now.plainDateTimeISO().add({days:getRandomInt(-20,20)}))
-}
-
-
-
-
-
-
-
+// for (let index = 0; index < 30; index++) {
+//     new assignment("Prov!", ["#ff8080","#90ff80","#ffdf80"][getRandomInt(0,3)],"lorem och ipsum",Temporal.Now.plainDateTimeISO().add({days:getRandomInt(-20,20)}))
+// }
 
 update();
 
@@ -71,11 +64,32 @@ forwardBtn.addEventListener("click", () => {
     update();
 })
 
+let addMode = false;
+
+const cancelbtn = document.querySelector("#cancel")
+const assignmentForm = document.querySelector(".assignment-form")
+
 createBtn.addEventListener("click", () => {
-    
+    if(addMode){
+        const title = document.querySelector("#title").value.trim();
+        const description = document.querySelector("#description").value.trim();
+        const color = document.querySelector("#color").value.trim();
+        const date = document.querySelector("#date").value.trim();
+        console.log(date);
+        console.log(color);
+        new assignment(title, color, description, Temporal.PlainDate.from(date));
+        update();
+    }
+    else{
+        assignmentForm.style.cssText = "display:flex;";
+        addMode = true;
+    }
 })
 
-
+cancelbtn.addEventListener("click", () => {
+    assignmentForm.style.cssText = "display:none;";
+    addMode = false;
+})
 
 function update(){
     updateCalendarDates(currentMonth);
@@ -150,7 +164,7 @@ function updateAssignments(month){
         assignments.forEach(a => {
             if(Temporal.PlainDate.compare(a.date, currentDate) == 0){
                 let assignmentP = document.createElement("p");
-                assignmentP.textContent = a.name;
+                assignmentP.textContent = a.title;
                 assignmentP.style.backgroundColor = a.color;
                 assignmentsDiv.appendChild(assignmentP);
             }
